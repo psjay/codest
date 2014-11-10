@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 install_requires = [
     "watchdog"
@@ -14,13 +14,13 @@ livecode=livecode.main:main
 
 setup(
     name="LiveCode",
-    version="0.0.1",
+    version="0.0.1.1",
     url='https://github.com/psjay/LiveCode',
     license='MIT',
     description="Live sync your local code in Git repository to remote development server via rsync.",
     author='psjay',
     author_email='psjay.peng@gmail.com',
-    packages=find_packages(),
+    packages=['livecode'],
     install_requires=install_requires,
     entry_points=entry_points,
     classifiers=[
