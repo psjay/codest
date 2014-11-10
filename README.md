@@ -5,7 +5,7 @@ Live sync your local code in Git repository to remote development server via rsy
 Features:
 
 * Sync your code only, no other shit.
-* Aggregating changes within a second.
+* Aggregating changes within one second.
 
 **DISCLAIMER**: This software has not been well tested, use it on your own risks.
 
