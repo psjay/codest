@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+*.swp
+.installed.cfg
+tags
+dist
+*.egg-info
+lib
+lib64
+.idea
