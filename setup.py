@@ -14,7 +14,7 @@ livecode=livecode.main:main
 
 setup(
     name="LiveCode",
-    version="0.0.1a1",
+    version="0.0.1",
     url='https://github.com/psjay/LiveCode',
     license='MIT',
     description="Live sync your local code in Git repository to remote development server via rsync.",
