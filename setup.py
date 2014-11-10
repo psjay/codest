@@ -23,4 +23,13 @@ setup(
     packages=find_packages(),
     install_requires=install_requires,
     entry_points=entry_points,
+    classifiers=[
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Operating System :: POSIX",
+        "License :: OSI Approved :: MIT License",
+        "Topic :: Software Development",
+        "Topic :: Utilities",
+    ],
 )
