@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+import datetime
 import logging
 import os
 import time
@@ -28,7 +29,7 @@ class LiveCodeEventHandler(FileSystemEventHandler):
             return
         if ignore_rule.is_git_ignored(event.src_path):
             return
-        print '[%s] %s.' % (event.event_type.upper(), event.src_path)
+        print '[%s %s] %s.' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), event.event_type.upper(), event.src_path)
         self._repo.sync()
 
 
@@ -58,7 +59,7 @@ def main():
     # set up monitor
     event_handler = LiveCodeEventHandler(repo)
     observer = Observer()
-    observer.schedule(event_handler, path)
+    observer.schedule(event_handler, path, recursive=True)
     observer.start()
     try:
         while True:
