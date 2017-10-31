@@ -51,7 +51,7 @@ class Sync(object):
         if archive_mode:
             params = ['rsync', '-aqzR', '--delete']
         else:
-            params = ['rsync', '-dqR', '--delete']
+            params = ['rsync', '-dqR', '--delete', '--delete-missing-args']
         params.extend([self._cal_path_with_implied_dirs(p) for p in paths])
         params.append(self._remote_path)
         subprocess.Popen(params).wait()
@@ -73,4 +73,6 @@ class Sync(object):
 
     def remove_path(self, path):
         with self._lock:
-            self._paths_to_sync.remove(os.path.abspath(path))
+            abs_path = os.path.abspath(path)
+            if abs_path in self._paths_to_sync:
+                self._paths_to_sync.remove(abs_path)

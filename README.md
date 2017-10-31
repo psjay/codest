@@ -11,6 +11,11 @@ Edit your code at local like you do it on remote.
 
 ## Installation
 
+Please make sure these programs installed and available in your `PATH`:
+
+* rsync >= 3.1.0
+* git >= 2.3.0
+
 ```
 $ pip install LiveCode
 ```

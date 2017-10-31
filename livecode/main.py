@@ -86,7 +86,7 @@ def main():
     repos = load_repos(args.path)
     sync = Sync(args.path, args.remote_path, interval=args.interval)
 
-    logging.info('Syncing: %s', args.path)
+    logging.info('Syncing recursively: %s', args.path)
     sync.add_path(args.path)
     sync.sync(archive_mode=True)
 
