@@ -9,18 +9,18 @@ install_requires = [
 
 entry_points = """
 [console_scripts]
-livecode=livecode.main:main
+codest=codest.main:main
 """
 
 setup(
-    name="LiveCode",
+    name="codest",
     version="0.1.1",
-    url='https://github.com/psjay/LiveCode',
+    url='https://github.com/psjay/codest',
     license='MIT',
-    description="Live sync your local code in Git repository to remote development server via rsync.",
+    description="Coding at local like you do it on remote",
     author='psjay',
     author_email='psjay.peng@gmail.com',
-    packages=['livecode'],
+    packages=['codest'],
     install_requires=install_requires,
     entry_points=entry_points,
     classifiers=[

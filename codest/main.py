@@ -11,17 +11,17 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-from livecode.repository import Repository, GitRepository
-from livecode.sync import Sync
+from codest.repository import Repository, GitRepository
+from codest.sync import Sync
 
 
 logger = logging.getLogger(__name__)
 
 
-class LiveCodeEventHandler(FileSystemEventHandler):
+class CodestEventHandler(FileSystemEventHandler):
 
     def __init__(self, sync, repos):
-        super(LiveCodeEventHandler, self).__init__()
+        super(CodestEventHandler, self).__init__()
 
         self._sync = sync
         self._repos = repos
@@ -94,7 +94,7 @@ def main():
         return
 
     # set up monitor
-    event_handler = LiveCodeEventHandler(sync, repos)
+    event_handler = CodestEventHandler(sync, repos)
     observer = Observer()
     observer.schedule(event_handler, os.path.abspath(args.path), recursive=True)
     observer.start()
@@ -103,7 +103,7 @@ def main():
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
-        logging.info('LiveCode will exit after the current sync.')
+        logging.info('codest will exit after the current sync.')
         event_handler.stop_sync()
     observer.join()
 
