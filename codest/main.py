@@ -68,6 +68,7 @@ def parse_args():
     args = argparser.parse_args()
     return args
 
+
 def config_logger():
     root = logging.getLogger()
     root.setLevel(logging.INFO)
@@ -84,11 +85,11 @@ def main():
     args = parse_args()
 
     repos = load_repos(args.path)
-    sync = Sync(args.path, args.remote_path, interval=args.interval)
+    sync = Sync(args.path, args.remote_path,
+                interval=args.interval)
 
     logging.info('Syncing recursively: %s', args.path)
-    sync.add_path(args.path)
-    sync.sync(archive_mode=True)
+    sync.sync_root()
 
     if args.sync_only:
         return

@@ -18,7 +18,7 @@ class GitRepository(Repository):
 
     def __init__(self, path):
         super(GitRepository, self).__init__(path)
-        self._ignored_files = set([])
+        self._ignored_files = set()
 
     def is_ignored(self, relpath):
         if relpath.endswith('.git') or '.git/' in relpath:

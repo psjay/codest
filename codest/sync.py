@@ -36,7 +36,13 @@ class Sync(object):
         self._lock = RLock()
         self._runner = SyncRunner(self)
 
-    def sync(self, archive_mode=False):
+    def sync_root(self):
+        params = ['rsync', '-aqzR', '--delete', '--exclude=.git', '--filter=:- /.gitignore']
+        params.append(self._cal_path_with_implied_dirs(self._path))
+        params.append(self._remote_path)
+        subprocess.Popen(params).wait()
+
+    def sync(self):
         paths_to_sync = None
         with self._lock:
             paths_to_sync = self._paths_to_sync
@@ -45,13 +51,10 @@ class Sync(object):
             logging.info('Syncing:%s%s', os.linesep, os.linesep.join(
                 [os.path.relpath(p) for p in paths_to_sync]
             ))
-            self._rsync_paths(paths_to_sync, archive_mode)
+            self._rsync_paths(paths_to_sync)
 
-    def _rsync_paths(self, paths, archive_mode=False):
-        if archive_mode:
-            params = ['rsync', '-aqzR', '--delete']
-        else:
-            params = ['rsync', '-dqR', '--delete', '--delete-missing-args']
+    def _rsync_paths(self, paths):
+        params = ['rsync', '-dqR', '--delete', '--delete-missing-args']
         params.extend([self._cal_path_with_implied_dirs(p) for p in paths])
         params.append(self._remote_path)
         subprocess.Popen(params).wait()
