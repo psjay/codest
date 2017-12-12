@@ -54,7 +54,7 @@ class Sync(object):
             self._rsync_paths(paths_to_sync)
 
     def _rsync_paths(self, paths):
-        params = ['rsync', '-dqR', '--delete', '--delete-missing-args']
+        params = ['rsync', '-dqRl', '--delete', '--delete-missing-args', '--filter=:- /.gitignore']
         params.extend([self._cal_path_with_implied_dirs(p) for p in paths])
         params.append(self._remote_path)
         subprocess.Popen(params).wait()
