@@ -7,7 +7,7 @@ Coding at local like you do it on remote.
 * Automatically: monitor changes.
 * Instantly: Sync just after change.
 * Incrementally: only sync changed parts.
-* Efficiently: aggregate all changes within a specifield interval and respect your git-ignore rules, only sync need files.
+* Efficiently: aggregate all changes within a specifield interval and respect your git-ignore rules, only sync needed files.
 
 ## Installation
 
